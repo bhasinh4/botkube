@@ -115,7 +115,8 @@ func (w *Webhook) SendMessage(_ context.Context, _ string) error {
 
 // PostWebhook posts webhook to listener
 func (w *Webhook) PostWebhook(ctx context.Context, jsonPayload *WebhookPayload) (err error) {
-	message, err := json.Marshal(jsonPayload)
+	jsonPayload_new := {"text": jsonPayload}
+	message, err := json.Marshal(jsonPayload_new)
 	if err != nil {
 		return err
 	}
